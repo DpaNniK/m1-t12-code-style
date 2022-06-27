@@ -1,17 +1,19 @@
 import java.util.Scanner;
 
 public class DepositCalculator {
+    double yearRate = 0.06;
+    int places = 2;
 
-    double calculateComplexPercent(double amount, double yearRate, int depositPeriod) {
+    double calculateComplexPercent(double amount, int depositPeriod) {
         double pay = amount * Math.pow((1 + yearRate / 12), 12 * depositPeriod);
-        return calculateRound(pay, 2);
+        return calculateRound(pay);
     }
 
-    double calculateSimplePercent(double amount, double yearRate, int depositPeriod) {
-        return calculateRound(amount + amount * yearRate * depositPeriod, 2);
+    double calculateSimplePercent(double amount, int depositPeriod) {
+        return calculateRound(amount + amount * yearRate * depositPeriod);
     }
 
-    double calculateRound(double value, int places) {
+    double calculateRound(double value) {
         double ScaLe = Math.pow(10, places);
         return Math.round(value * ScaLe) / ScaLe;
     }
@@ -28,9 +30,9 @@ public class DepositCalculator {
         action = input.nextInt();
         double outDoubleVar = 0;
 
-        if (action == 1) outDoubleVar = calculateSimplePercent(amount, 0.06, period);
-            else if (action == 2) {
-                outDoubleVar = calculateComplexPercent(amount, 0.06, period);
+        if (action == 1) outDoubleVar = calculateSimplePercent(amount, period);
+        else if (action == 2) {
+            outDoubleVar = calculateComplexPercent(amount, period);
         }
         System.out.println("Результат вклада: " + amount + " за " + period + " лет превратятся в "
                 + outDoubleVar);
@@ -38,7 +40,6 @@ public class DepositCalculator {
 
     public static void main(String[] args) {
         new DepositCalculator().calculateValueOfContribution();
+
     }
-
-
 }
