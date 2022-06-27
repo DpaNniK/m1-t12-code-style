@@ -14,7 +14,7 @@ public class DepositCalculator {
     }
 
     double calculateRound(double value) {
-        double ScaLe = Math.pow(10, places);
+        double ScaLe = Math.pow(10, places); //  ScaLe лучше назвать просто scale
         return Math.round(value * ScaLe) / ScaLe;
     }
 
@@ -23,12 +23,12 @@ public class DepositCalculator {
         int action;
         Scanner input = new Scanner(System.in);
         System.out.println("Введите сумму вклада в рублях:");
-        int amount = input.nextInt();
+        int amount = input.nextInt(); // Объявление переменной лучше вывести наверх к остальным, здесь написать как и в остальных - amount = input...
         System.out.println("Введите срок вклада в годах:");
         period = input.nextInt();
         System.out.println("Выберите тип вклада, 1 - вклад с обычным процентом, 2 - вклад с капитализацией:");
         action = input.nextInt();
-        double outDoubleVar = 0;
+        double outDoubleVar = 0; // В названии переменной указан ее тип 
 
         if (action == 1) outDoubleVar = calculateSimplePercent(amount, period);
         else if (action == 2) {
